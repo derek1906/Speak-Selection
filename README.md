@@ -11,3 +11,5 @@ correct language before using.
 ## Tools
 Android Studio is recommended to build the project. There are no extra dependencies.
 
+## Requirements
+Android 6.0 or above is required for the new intent filter to work.
