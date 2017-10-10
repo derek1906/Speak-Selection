@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Speak Selection</string>
+    <string name="settings_label">Text to Speech Settings</string>
+</resources>
