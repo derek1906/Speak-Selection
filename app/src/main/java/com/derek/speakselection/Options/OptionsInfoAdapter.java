@@ -27,11 +27,11 @@ public class OptionsInfoAdapter extends ArrayAdapter<OptionsInfo>{
         View view = super.getView(position, convertView, parent);
 
         ((TextView) view.findViewById(android.R.id.text1)).setText(option.title);
-        ((TextView) view.findViewById(android.R.id.text2)).setText(option.value);
+        ((TextView) view.findViewById(android.R.id.text2)).setText(option.displayValue);
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                option.action(option);
+                option.action.call(option);
             }
         });
 

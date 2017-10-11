@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Speak Selection</string>
-    <string name="settings_label">Text to Speech Settings</string>
+    <string name="settings_label">Speak Selection Settings</string>
+    <string name="invalid_selected_value">%1$s (invalid)</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 </resources>

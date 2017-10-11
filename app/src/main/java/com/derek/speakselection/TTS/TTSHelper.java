@@ -13,6 +13,7 @@ import java.util.Locale;
 public class TTSHelper implements TextToSpeech.OnInitListener {
     private TextToSpeech tts;
     private boolean ready = false;
+    private String engine;
     private Locale locale;
     private WaitingJob waiting;
     private TTSSpeakListener speakListener;
@@ -33,22 +34,34 @@ public class TTSHelper implements TextToSpeech.OnInitListener {
         }
 
         @Override
+        public void onStop(String s, boolean interrupted) {
+            Log.d("TTSHelper", "Utterance stopped");
+            speakListener.onDone();
+        }
+
+        @Override
         public void onError(String s) {
             Log.d("TTSHelper", "Utterance error");
             speakListener.onDone();
         }
     };
 
-    public TTSHelper(Context ctx, Locale locale) {
+    public TTSHelper(Context ctx, String engine, Locale locale) {
+        this.engine = engine;
         this.locale = locale;
         params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "");
 
-        tts = new TextToSpeech(ctx, this);
+        if(engine.length() < 1) {
+            tts = new TextToSpeech(ctx, this);
+        }else{
+            tts = new TextToSpeech(ctx, this, engine);
+        }
     }
 
-    public TTSHelper(Context ctx) {
-        this(ctx, Locale.US);
+    public TTSHelper(Context ctx, String engine) {
+        this(ctx, engine, Locale.US);
     }
+
 
     @Override
     public void onInit(int status) {
@@ -60,7 +73,7 @@ public class TTSHelper implements TextToSpeech.OnInitListener {
 
             Log.d("TTSHelper", "TTSHelper ready");
 
-            if(onInitListener != null){
+            if (onInitListener != null) {
                 onInitListener.call(this);
             }
 
@@ -84,7 +97,7 @@ public class TTSHelper implements TextToSpeech.OnInitListener {
     }
 
     public void setOnInitListener(Callback cb) {
-        if(ready){
+        if (ready) {
             cb.call(this);
         }
         onInitListener = cb;
