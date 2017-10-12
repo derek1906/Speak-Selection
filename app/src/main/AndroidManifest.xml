@@ -21,8 +21,9 @@
         </activity>
         <activity
             android:name=".ShareTextActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoDisplay">
+            android:label="@string/share_label"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:icon="@drawable/share_via_icon">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -78,9 +78,9 @@ public class SpeakingService extends Service {
         // Create notification
         Notification notification = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_volume_up_white_24dp)
-                .setContentTitle("Speak Selection")
-                .setContentText("Playing...")
-                .addAction(R.drawable.ic_stop_black_24dp, "Stop", stopPlaybackPendingIntent)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.notification_playing_message))
+                .addAction(R.drawable.ic_stop_black_24dp, getString(R.string.notification_stop_action_message), stopPlaybackPendingIntent)
                 .build();
         final NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(0, notification);

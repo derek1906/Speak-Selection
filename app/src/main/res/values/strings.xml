@@ -4,4 +4,7 @@
     <string name="invalid_selected_value">%1$s (invalid)</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
+    <string name="share_label">Speak selection</string>
+    <string name="notification_playing_message">Playing...</string>
+    <string name="notification_stop_action_message">Stop playback</string>
 </resources>
